@@ -1,0 +1,38 @@
+<!--Tyrone Overby
+	New Karate site project
+	-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+</head>
+
+<body>
+    <div id="header">
+
+      <h1>Welcome to isshinryu-karate in Cathedral City California</h1>
+      
+    </div> 
+
+    <div id="tabs">
+      <ul>
+        <li><?php // Create a login/logout link:
+          if (isset($_SESSION['firstname'])) {
+            echo '<a href="logout.php">Logout</a>';
+          } else {
+            echo '<a href="login.php">Login</a>';
+          }
+          ?></li>
+        <li><a href="new_cust.php">Get more information</a></li>
+        <li><a href="instructor.php">Our Instructors</a></li>
+        <li><a href="join.php">Join Now!</a></li>
+         <li><a href="Awards.php">Awards and Honors</a></li>
+         
+      </ul> 
+    </div>
+  
+  </body>
+</html>
