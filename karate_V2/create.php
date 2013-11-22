@@ -57,11 +57,13 @@ $q = "INSERT INTO `to2446992_kv2_admin`(firstname, lastname, `email`, `pass`) VA
 $r = @mysqli_query ($database, $q); // Run the query.
 
 		if ($r)
-		 { 
-
-			echo '<h2>SUCCESS!</h2>';
-			echo '<p><br></p>';
-
+				 { 
+				<div id="wrapper">
+				
+					echo '<h2>SUCCESS!</h2>';
+					echo '<p><br></p>';
+				</div>
+		
 		$t = "SELECT lastname, firstname , email AS LastName, FirstName, EmailAddress FROM `to2446992_kv2_admin`";		
 			$x = @mysqli_query ($database, $t); // Run the query.
 
