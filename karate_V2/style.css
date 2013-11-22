@@ -1,0 +1,218 @@
+
+html, html a, html p,html li, html h1, html h2, html input{
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+* {
+	
+	border:0;
+	margin:0;
+	padding:0;
+
+}
+
+/* general */
+a {
+	
+	text-decoration:none;
+}
+ body{
+	background-color: #CCCCFF;
+	color:#000000;
+	font:0.8em Arial, Helvetica, "bitstream vera sans", sans-serif;
+}
+
+
+#wrapper
+{
+	margin:0 auto;
+	width:751px;
+	
+}
+
+a:hover {
+	
+	text-decoration:none;
+}
+
+#bio p img {
+	float: left;
+    margin-right: 20px;
+}
+
+/* header */
+#header {
+	border-bottom:1px solid #999;
+	height:80px;
+	margin:0 auto;
+	width:751px;
+}
+#header h1 {
+	color:#888;
+	font-size:250%;
+	letter-spacing:-3px;
+	text-align:left;
+	padding:15px;
+	margin-bottom:-5px;
+}
+#header h2 {
+	color:#CCC;
+	font-size:200%;
+	letter-spacing:-2px;
+	text-align:right;
+}
+#content img
+{
+	float: right;
+	height:100px;
+	width:150px;
+}
+
+
+/* tabs */
+#tabs {
+	background:#fafafa;
+	border-right:1px solid #999;
+	margin:0 auto;
+	width:750px;
+	height:40px;
+	list-style:none;
+}
+#tabs li {
+	border-left:1px solid #999;
+	float:left;
+	width:149px;
+	list-style:none;
+}
+#tabs a {
+	color:#555;
+	display:block;
+	line-height:40px;
+	text-align:center;
+	font-family:sans-serif;
+}
+#tabs a:hover {
+	background:#e3e3e3;
+	color:#555;
+}
+#tabs .active {
+	background:#e3e3e3;
+	color:#777;
+}
+
+/* content */
+#content {
+	height:auto;
+	margin:0 auto;
+	padding:0 0 20px;
+	width:751px;
+	
+}
+#content h1 {
+	border-bottom:1px dashed #999;
+	font-size:1.8em;
+	padding:20px 0 0;
+}
+#content p {
+	padding:20px 20px 0;
+}
+#awards ol li{
+	list-style-type: none;
+	padding:10px 0 0;
+}
+
+#content ol li{
+	list-style-type: none;
+	padding:20px 0 0;
+
+}
+#footer {
+	border-top:1px solid #999; 
+	height:50px;
+	margin:0 auto;
+	padding:10px;
+	text-align:center;
+	width:751px;
+	}
+
+#footer h1{
+	color:#000000;}
+
+#Form  input[type="text"],input[type="tel"],input [type="password"]
+{
+	letter-spacing:1px;
+	text-align:left;
+	padding:5px;
+	width:250px;
+	display:block;
+	box-shadow: -5px -5px 5px #888;
+}
+
+#Form input[type="submit"]
+{
+	height: 50px;
+	width:130px;
+/*	padding: 20px;*/
+	margin:20px 0px 20px;
+	display:block;
+	
+}
+
+#Form p
+{	text-align:left;
+	font-weight:bold;
+	font-size:150%;
+	font-family:"Times New Roman", Times, serif;
+	padding:5px;
+	display:block;
+}
+
+#Form_App input[type="text"],input[type="tel"]
+{
+	letter-spacing:1px;
+	text-align:left;
+	padding:5px;
+	width:250px;
+	display:block;
+	box-shadow: -5px -5px 5px #888;
+}
+
+#Form_App_r {
+display:block;	
+
+}
+#Form_App_l {
+display: block;	
+}
+.clear{
+	clear:both;
+}
+
+#Form_App input[type="submit"]
+{
+	height: 50px;
+	width:130px;
+/*	padding: 20px;*/
+	margin:20px 0px 20px;
+	display:block;
+}
+
+#Form_App p
+{	text-align:left;
+	font-size:150%;
+	font-family:"Times New Roman", Times, serif;
+	padding:5px;
+}
+
+
+#blackbelts img{
+text-align: center;
+}
+#blackbelts ol li{
+list-style-type: none;
+ border: solid 1px black;
+ display:block;
+
+
+}
