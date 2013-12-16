@@ -1,7 +1,4 @@
-47924
-=====
-
-CIS12 FINAL
+<?php
 /*	Author: Tyrone Overby
 	Project: Final-Karate-Personal-Survey-Cart
 	Class: PHP CIS-12-47924
@@ -29,4 +26,13 @@ Admin page=manage.php
 	getrecords.php-display students and contactins in tables
 	upload_image.php-Change student pics
 
-*/to be continued
+--------------------------------------
+Fix Alot of errors.. Login page displays. View_Students.php works. Most path errors have been fixed. 
+Modified config_ajax.php correctly and login.js files
+
+Current status: After logging out cannot log back in. Even though session ids are created.  No 302 errors..to be continued
+
+view ADMIN page here:
+
+http://209.129.8.3/~47924/to2446992/htdocs/final/karateSECURE/manage.php
+*/
