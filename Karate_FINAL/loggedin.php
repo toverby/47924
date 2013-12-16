@@ -6,7 +6,7 @@ require (config_inc.php);
 if (!isset($_SESSION['agent']) OR ($_SESSION['agent'] != md5($_SERVER['HTTP_USER_AGENT']) )) {
 
 	// Need the functions:
-	require ('login_functions.inc.php');
+	require ('login_ajax.php');
 	redirect_user();	
 
 }
@@ -20,4 +20,5 @@ echo "<h1>Logged In!</h1>
 <p>You are now logged in, {$_SESSION['firstname']}!</p>
 <p><a href=\"logout.php\">Logout</a></p>";
 
-<? include ('footer.html');  ?>
+?>
+<?php include ('footer.html');  ?>

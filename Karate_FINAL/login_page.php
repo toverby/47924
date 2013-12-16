@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -20,9 +21,10 @@
 
 	<form action="login.php" method="post" id="login">
 		<p id="emailP">Email Address: <input type="text" name="email" id="email" size="15" /><span class="errorMessage" id="emailError">Please enter your email address!</span></p>
-		<p id="passwordP">Password: <input type="password" name="pass" id="pass" size"15" /><span class="errorMessage" id="passwordError">Please enter your password!</span></p>
+		<p id="passwordP">Password: <input type="password" name="password" id="password" size"15" /><span class="errorMessage" id="passwordError">Please enter your password!</span></p>
 		<p><input type="submit" name="submit" value="Login!" /></p>
 
 	</form>
 </body>
 </html>
+<?php ob_flush() ?>
