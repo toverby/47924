@@ -1,11 +1,13 @@
-<?php #index.php
-	//Tyrone Overby
-	session_start();
-	include ('header.html');
+<?php ob_start(); 
+
+ header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
+     header('Pragma: no-cache'); // HTTP 1.0.
+      header('Expires: 0'); // Proxies.
 	$page_title="Weclome to isshinryu-karate";
 	//get meta info from orgrinal site
 	$tags = get_meta_tags('http://isshinryu-karate.com');
-	   
+	require('config_inc.php'); 
+	require_once (HEADER);
 // test echo $tags['keywords'];     
 // test echo $tags['description'];  
 
@@ -51,14 +53,14 @@
  
  <h4>Ask about Special Family Rates ~ ~ ~ ~ New Students Start Weekly ~ ~ ~ ~ 760-568 0961 CALL NOW!</h4>
  
- <p>68225 Ramon Road at Whispering Palms Cathedral City "LIFE"WHITE Belt's Testing on Tuesday August 20th Juan Dominic Marissa Faith YELLOW Belt's Testing on ORANGE Belt's Testing on GREEN Belt's Testing on Tuesday August 20th Denise BROWN Belt's Testing on Tuesday August 20th Gracie BLACK Belt Testing on We Need Help for the SEPTEMBER Shiai is there any one Wanting to HELP? For those of you that don't know "US" here is a brief description of our Dojo. We are at 68225 Ramon Road at the intersection of Ramon Road and Whispering Palms.</p>
+ <p>68225 Ramon Road at Whispering Palms Cathedral City "LIFE"WHITE Belt's Testing on Tuesday August 20th 		Juan Dominic Marissa Faith YELLOW Belt's Testing on ORANGE Belt's Testing on GREEN Belt's Testing on Tuesday August 20th Denise BROWN Belt's Testing on Tuesday August 20th Gracie BLACK Belt Testing on We Need Help for the SEPTEMBER Shiai is there any one Wanting to HELP? For those of you that don't know "US" here is a brief description of our Dojo. We are at 68225 Ramon Road at the intersection of Ramon Road and Whispering Palms.</p>
 
 <p> We  have enough room to do Sparring and Self Defense in 5 FULL SIZED PERMANENT RINGS, Kata and Weapons comfortably with mirrors, We also have 6 hanging bags, RUBBER FLOORS, a room for consultation and counseling, as well as a room with about a 12 inch thick foam floor for beginners to learn to fall properly without fear of hurting themselves, storage space for our required supplies. As well as seperate Men's and Women's rest rooms with  Lockers. We also have a Knife Throwing, and Zen Archery Range. </p>
   
  </div>   
 </div>
 </body>
-<!--insert footer page-->
+</html>
 <?php
-	include ('footer.html');
+	include ('rfooter.html');
 ?>

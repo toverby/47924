@@ -1,4 +1,5 @@
-<?php 
+<?php ob_start();?>
+<?php
 
 function redirect_user ($page = 'index.php') {
 
@@ -34,17 +35,17 @@ function check_login($database, $email = '', $pass = '') {
 	if (empty($errors)) { // If everything's OK.
 
 				// Retrieve the user_id and first_name for that email/password combination:
-						//$pass = sha1($pass);
-			$q = "SELECT lastname, firstname FROM to2446992_kv2_admin WHERE email='$e' AND pass='$pass'";		
-			$r = @mysqli_query ($database, $q); // Run the query.
+			$p= sha1($p);
+			$q = "SELECT lastname, firstname FROM to2446992_karate_admin WHERE email='$e' AND pass='$p'";		
+			$r = @mysqli_query ($database, $q);
 
-	/*if (!mysqli_query($database,$q)){
+	if (!mysqli_query($database,$q)){
 
 		die('Error: SQL SELECT command   ' . mysqli_error($database));
 							 }
 						echo "Profile not found";
-	
-	*/	
+						echo "$p";
+		
 		// Check the result:
 	if (mysqli_num_rows($r) == 1) {
 

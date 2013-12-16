@@ -1,8 +1,7 @@
 <?php
 
- #index.php
+include ('manage.php');
 //Tyrone Overby
-include ('manage.html');
 $page_title = 'Current Students';
 ?>
 
@@ -11,7 +10,7 @@ $page_title = 'Current Students';
 require ('connector.php'); 
 		
 
-$q = "SELECT CONCAT(last_name,first_name, '','','') as name FROM  2446992_New_Customer";	
+$q = "SELECT CONCAT(LastName, FirstName, '','','') as name FROM  to2446992_Karate_Student_App";	
 
 $r = @mysqli_query ($database, $q); 
 
@@ -44,3 +43,4 @@ if ($num > 0){
 
 mysqli_close($database); 
 ?>
+<?php include('includes/footer.html'); ?>

@@ -1,8 +1,9 @@
-<?php #
+<?php
 session_start(); // Access the existing session.
 
 // If no session variable exists, redirect the user:
 if (!isset($_SESSION['lastname'])) {
+	
 
 	// Need the functions:
 	require ('login_functions.inc.php');
@@ -12,7 +13,7 @@ if (!isset($_SESSION['lastname'])) {
 
 	$_SESSION = array(); // Clear the variables.
 	session_destroy(); // Destroy the session itself.
-	setcookie ('PHPSESSID', '', time()-3600, '/', '', 0, 0); // Destroy the cookie.
+	setcookie ('PHPSESSID', '', time()-300, '/', '', 0, 0); // Destroy the cookie.
 
 }
 
