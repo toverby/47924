@@ -1,3 +1,9 @@
+
+html, html a, html p,html li, html h1, html h2, html input{
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
 * {
 	
 	border:0;
@@ -6,28 +12,15 @@
 
 }
 
-* { margin:0; padding:0; }
-p { margin:5px 0 10px 0; }
-
-
-html, html a, html p,html li, html h1, html h2, html input 
-{
-    -webkit-font-smoothing: antialiased;
-    text-shadow: 2px 2px 2px rgba(0,0,0,0.004);
-}
-
-
-
+/* general */
 a {
 	
 	text-decoration:none;
 }
-
  body{
-	background-color: #382406;
-	color: #FADFDF;
+	background-color: #383868;
+	color:#000000;
 	font:0.8em Arial, Helvetica, "bitstream vera sans", sans-serif;
-	
 }
 
 
@@ -43,40 +36,32 @@ a:hover {
 	text-decoration:none;
 }
 
-#bio p img 
-
-{
+#bio p img {
 	float: left;
     margin-right: 20px;
 }
 
-
-#header 
-{
+/* header */
+#header {
 	border-bottom:1px solid #999;
 	height:80px;
 	margin:0 auto;
 	width:751px;
 }
-
-#header h1, h3 
-{
-	color:#F0F0F0 ;
+#header h1 {
+	color:#888;
 	font-size:250%;
 	letter-spacing:-3px;
-	text-align:center;
+	text-align:left;
 	padding:15px;
 	margin-bottom:-5px;
 }
-
-#header h2
- {
+#header h2 {
 	color:#CCC;
 	font-size:200%;
 	letter-spacing:-2px;
 	text-align:right;
 }
-
 #content img
 {
 	float: right;
@@ -85,27 +70,21 @@ a:hover {
 }
 
 
-
+/* tabs */
 #tabs {
 	background:#fafafa;
 	border-right:1px solid #999;
 	margin:0 auto;
-	width:950px;
+	width:750px;
 	height:40px;
 	list-style:none;
-	font-size: 12px;   
-	font-weight: bold;
 }
-
 #tabs li {
-	border-left:1px solid #999;
+	border-left:1px solid #721515;
 	float:left;
 	width:149px;
 	list-style:none;
 }
-
-
-
 #tabs a {
 	color:#555;
 	display:block;
@@ -113,7 +92,6 @@ a:hover {
 	text-align:center;
 	font-family:sans-serif;
 }
-
 #tabs a:hover {
 	background:#e3e3e3;
 	color:#555;
@@ -123,25 +101,7 @@ a:hover {
 	color:#777;
 }
 
-#tabs li.logout {
-	border-left:3px solid #999;
-	float:left;
-	width:135px;
-	list-style:none;
-	background: #700000;
-	border-right:3px solid #999;
-	margin:0 auto;
-	list-style:none;
-	font-size: 12px;   
-	font-weight: bold;
-	color:#555;
-	display:block;
-	line-height:40px;
-	text-align:center;
-	font-family:sans-serif;
-	background:#e3e3e3;
-}
-
+/* content */
 #content {
 	height:auto;
 	margin:0 auto;
@@ -174,19 +134,12 @@ a:hover {
 	padding:10px;
 	text-align:center;
 	width:751px;
-	color: #000000
 	}
 
-#footer h3 { 	
-color:#180000;
-}
+#footer h1{
+	color:#000000;}
 
-#footer a { 	
-color:#180000;
-}
-
-
-#Form input[type="text"], input[type="tel"], input[type="password"]
+#Form  input[type="text"],input[type="tel"],input [type="password"]
 {
 	letter-spacing:1px;
 	text-align:left;
@@ -196,18 +149,18 @@ color:#180000;
 	box-shadow: -5px -5px 5px #888;
 }
 
-#Form input.login_button
+#Form input[type="submit"]
 {
 	height: 50px;
 	width:130px;
+/*	padding: 20px;*/
 	margin:20px 0px 20px;
 	display:block;
 	
 }
 
 #Form p
-{	
-  text-align:left;
+{	text-align:left;
 	font-weight:bold;
 	font-size:150%;
 	font-family:"Times New Roman", Times, serif;
@@ -225,19 +178,18 @@ color:#180000;
 	box-shadow: -5px -5px 5px #888;
 }
 
-#Form_App_R {
+#Form_App_r {
 display:block;	
 
-
 }
-#Form_App_L {
+#Form_App_l {
 display: block;	
 }
 .clear{
 	clear:both;
 }
 
-#Form_App input [type="submit"]
+#Form_App input[type="submit"]
 {
 	height: 50px;
 	width:130px;

@@ -1,6 +1,6 @@
 <?php #index.php
 	//Tyrone Overby
-	include_once ('./header.html');
+	include ('header.html');
 	$page_title="Awards and Honors";
 ?>
 
@@ -46,5 +46,5 @@
  </html>
  <?php
 
-	include_once ('./footer.html');
+	include ('footer.html');
 ?>

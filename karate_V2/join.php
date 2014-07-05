@@ -1,6 +1,6 @@
 <?php 
-//require('config_inc.php');
-include ('manage.php');
+session_start();
+include ('header.html'); 
 
 $page_title = 'Application to join';?>
 
@@ -8,47 +8,47 @@ $page_title = 'Application to join';?>
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-require (CONNECTOR);
+	require ('connector.php');
 
-$errors = array(); // Initialize an error array to store errors
+	$errors = array(); // Initialize an error array to store errors
 
 // Check for a first name:
 	if (empty($_POST['FirstName'])) {
 		$errors[] = 'You forgot to enter your first name.';
 			
 									} else {
-											$fn = $mysqli->mysqli_real_escape_string($database, trim($_POST['FirstName']));
-											}
+											$fn = mysqli_real_escape_string($database, trim($_POST['FirstName']));
+											}	
 
 	// Check for a last name:
 	if (empty($_POST['LastName'])) {
 		$errors[] = 'You forgot to enter your last name.';
 									} else {
-		$ln = $mysqli->mysqli_real_escape_string($database, trim($_POST['LastName']));
+		$ln = mysqli_real_escape_string($database, trim($_POST['LastName']));
 									}
 
 	if (empty($_POST['Birthdate'])) {
 		$errors[] = 'Please enter a birthdate';
 									} else {
-									$bd =$mysqli->mysqli_real_escape_string($database, trim($_POST['Birthdate']));
+									$bd = mysqli_real_escape_string($database, trim($_POST['Birthdate']));
 									}
 
 	if (empty($_POST['EmergencyContact'])) {
 				$errors[] = 'Please enter an Emergency Contact Name and Phone Number';
 										} else {
-					$ec = $mysqli->mysqli_real_escape_string($database, trim($_POST['EmergencyContact']));
+					$ec = mysqli_real_escape_string($database, trim($_POST['EmergencyContact']));
 											}
 
 	if (empty($_POST['MobileNumber'])) {
 		$errors[] = 'Please enter a telephone number';
 										} else {
-							$mp = $mysqli->mysqli_real_escape_string($database, trim($_POST['MobileNumber']));
+							$mp = mysqli_real_escape_string($database, trim($_POST['MobileNumber']));
 										}
 
 	if (empty($_POST['Address'])) {
 					$errors[] = 'Please enter a valid address';
 								} else {
-		$fn = $mysqli->mysqli_real_escape_string($database, trim($_POST['Address']));
+		$ads = mysqli_real_escape_string($database, trim($_POST['Address']));
 								}
 
 	if (empty($_POST['City'])) {
@@ -58,65 +58,67 @@ $errors = array(); // Initialize an error array to store errors
 							}
 
 	if (empty($_POST['PostalCode'])) {
-							$errors[] = 'Please enter a zip code';
+								$errors[] = 'Please enter a zip code';
 									} else {
-								$zip = $mysqli->mysqli_real_escape_string($database, trim($_POST['PostalCode']));
+									$zip = mysqli_real_escape_string($database, trim($_POST['PostalCode']));
 								}
 
 	if (empty($_POST['EmailAddress'])) {
 								$errors[] = 'You forgot to enter your email address.';
 	 								} else {
-									$e = $mysqli-> mysqli_real_escape_string($database, trim($_POST['EmailAddress']));
+									$e = mysqli_real_escape_string($database, trim($_POST['EmailAddress']));
 											}
 	if (!isset($_POST['Photo'])) {
 								$_POST['Photo'] = "undefine";
 				}else{
 
-					$img = $mysqli->mysqli_real_escape_string($database, trim($_POST['Photo']));
+					$img = mysqli_real_escape_string($database, trim($_POST['Photo']));
 
 								}
 	if (!isset($_POST['ChildrenNames'])) {
 			$_POST['ChildrenNames'] = "undefine";
 							}else{
-					$cn =$mysqli->mysqli_real_escape_string($database, trim($_POST['ChildrenNames']));
+					$cn = mysqli_real_escape_string($database, trim($_POST['ChildrenNames']));
 
 								}
 	if (!isset($_POST['Notes'])) {
 			$_POST['Notes'] = "undefine";
 							}else{
-					$nt= $mysqli->mysqli_real_escape_string($database, trim($_POST['Notes']));
+					$nt=mysqli_real_escape_string($database, trim($_POST['Notes']));
 
 								}							
 	if (!isset($_POST['SpouseName'])) {
 			$_POST['SpouseName'] = "undefine";
 							}else{
-					$sn=$mysqli->mysqli_real_escape_string($database, trim($_POST['SpouseName']));
+					$sn=mysqli_real_escape_string($database, trim($_POST['SpouseName']));
 
 								}							
 	if (!isset($_POST['State'])) {
 			$_POST['State'] = "undefine";
 							}else{
-					$st=$mysqli->mysqli_real_escape_string($database, trim($_POST['State']));
+					$st=mysqli_real_escape_string($database, trim($_POST['State']));
 
 								}							
 	if (!isset($_POST['PhoneNumber'])) {
 			$_POST['PhoneNumber'] = "undefine";
 							}else{
-					$hp=$mysqli->mysqli_real_escape_string($database, trim($_POST['PhoneNumber']));
+					$hp=mysqli_real_escape_string($database, trim($_POST['PhoneNumber']));
 
 								}							
 	if (!isset($_POST['Salutation'])) {
 			$_POST['Salutation'] = "undefine";
 							}else{
-			$sal= $mysqli->mysqli_real_escape_string($database, trim($_POST['Salutation']));
+			$sal=mysqli_real_escape_string($database, trim($_POST['Salutation']));
 
 								}				
 
 	if (empty($errors)){
 
-
-
-		if(mysqli_num_rows(mysqli_query ($database ,"SELECT LastName,FirstName FROM to2446992_Karate_Student_App WHERE LastName = '$ln' AND FirstName = '$fn' "))){
+		/*
+		$LastName = $_POST["LastName"];
+		$FirstName = $_POST["FirstName"];
+		*/
+		if(mysqli_num_rows(mysqli_query ($database ,"SELECT LastName,FirstName FROM to2446992_kv2 WHERE LastName = '$ln' AND FirstName = '$fn' "))){
 						//Code inside if block if userid is already there
 					$errors[]='The system says you already have an Application on file. Please call for help';
 					
@@ -125,13 +127,14 @@ $errors = array(); // Initialize an error array to store errors
 
 															}
 						
-		//$q = "INSERT INTO  to2446992_Karate_Student_App (RegDate,Photo,Salutation,FirstName,LastName,Birthdate,EmergencyContact,MobileNumber,PhoneNumber,ChildrenNames,Address,City,State,PostalCode,EmailAddress,SpouseName,Notes)VALUES (NOW(),'$sal','$img',$fn','$ln','$bd','$ec','$hp','$cn','$ads','$cty','$st','$zip','$e','$sn','$nt')";	
-	$q = "INSERT INTO to2446992_Karate_Student_App(`RegDate`,`Photo`,`Salutation`,`FirstName`,`LastName`,`Birthdate`,`EmergencyContact`,`MobileNumber`,`PhoneNumber`,`ChildrenNames`,`Address`,`City`,`State`,`PostalCode`,`EmailAddress`,`SpouseName`,`Notes`)VALUES (NOW(),'$img','$sal','$fn','$ln','$bd','$ec','$mp','$hp','$cn','$ads','$cty','$st','$zip','$e','$sn','$nt')";														
+		
+
+	//$q = "INSERT INTO  to2446992_kv2 (RegDate,Photo,Salutation,FirstName,LastName,Birthdate,EmergencyContact,MobileNumber,PhoneNumber,ChildrenNames,Address,City,State,PostalCode,EmailAddress,SpouseName,Notes)VALUES (NOW(),'$sal','$img',$fn','$ln','$bd','$ec','$hp','$cn','$ads','$cty','$st','$zip','$e','$sn','$nt')";	
+	$q = "INSERT INTO to2446992_kv2(`RegDate`,`Photo`,`Salutation`,`FirstName`,`LastName`,`Birthdate`,`EmergencyContact`,`MobileNumber`,`PhoneNumber`,`ChildrenNames`,`Address`,`City`,`State`,`PostalCode`,`EmailAddress`,`SpouseName`,`Notes`)VALUES (NOW(),'$img','$sal','$fn','$ln','$bd','$ec','$mp','$hp','$cn','$ads','$cty','$st','$zip','$e','$sn','$nt')";														
 
 				$r = @mysqli_query ($database, $q);
-				$mysqli->query($r);
 							
-					if ($mysqli->affected_rows==1){ 
+					if ($r){ 
 
 							echo '<h1>Thank you!</h1>';
 							
@@ -166,15 +169,14 @@ $errors = array(); // Initialize an error array to store errors
 
 <div id="wrapper">
 
-<title><?php echo $page_title; ?></title>
+	<title><?php echo $page_title; ?></title>
 
-<form id="Form_App" action="join.php" method="post">
+	<form id="Form_App" action="join.php" method="post">
 		
-	<div id="Form_App_L">
-		<fieldset><legend>Personal Info</legend>
-			
+		<div id="Form_App_l">
 		
-			
+			<h2>Personal Info</h2>
+
 					<p>Mr./Mrs./Miss <input type="text" name="Salutation" size="5" maxlength="5" value="<?php if (isset($_POST['Salutation'])) echo $_POST['Salutation']; ?>" /></p>
 				   
 					<p>First Name: <input type="text" name="FirstName" size="20" maxlength="20" value="<?php if (isset($_POST['FirstName'])) echo $_POST['FirstName']; ?>" /></p>
@@ -193,10 +195,10 @@ $errors = array(); // Initialize an error array to store errors
 				    <p>Children Names(if necessary): <input type="text" name="ChildrenNames" size="20" maxlngth="20" value="<?php if (isset($_POST['ChildrenNames'])) echo $_POST['ChildrenNames']; ?>" /></p>
 	    
 		</div>
-	    </fieldset>
-	  <div id="Form_App_R">
-	  	<fieldset><legend>Location</legend>
-		  	
+	    
+	  <div id="Form_App_r">
+	  	
+		  	<h2>Location</h2>
 			    <p>Address: <input type="text" name="Address" size="50" maxlength="50" value="<?php if (isset($_POST['Address'])) echo $_POST['Address']; ?>" /></p>
 
 			    <p>City: <input type="text" name="City" size="20" maxlength="25" value="<?php if (isset($_POST['City'])) echo $_POST['City']; ?>" /></p>
@@ -210,16 +212,20 @@ $errors = array(); // Initialize an error array to store errors
 							
 			   	<p>Spouse Name(optional): <input type="text" name="SpouseName" size="20" maxlength="20" value="<?php if (isset($_POST['SpouseName'])) echo $_POST['SpouseName']; ?>"  /> </p>
 		    				
-			   	<p for="Photo">Upload a photo</label> <input type="file" action="add_print.php" name="Photo" value="<?php if (isset($_POST[	'Photo'])) echo $_POST['Photo']; ?>"  /></p>
+			   	<p for="Photo">Upload a photo</label> <input type="file" name="Photo" value="<?php if (isset($_POST[	'Photo'])) echo $_POST['Photo']; ?>"  /></p>
 		
 			<p>Please tell use more about yourself and/or child; such as health conditionals, prior experience or special needs<input type="text" name="Notes" size="1000" maxlength="1000" value="<?php if (isset($_POST['phone_number'])) echo $_POST['phone_number']; ?>"  /></p>
 
-		  <p><input type="submit" name="submit" value="Register" /></p>
-		   </fieldset>
+		   	<p><input type="submit" name="submit" value="Register" /></p>
+		   
 	  </div>
 	
 	</form>
 
 </div>
 
-<?php include ('footer.html');  ?>
+<?php 
+
+include ('footer.html'); 
+
+?>

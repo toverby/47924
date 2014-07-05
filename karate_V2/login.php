@@ -1,21 +1,19 @@
-<?php
+<?php 
 
+// Check if the form has been submitted:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-require ('config_inc.php');
-
-require (CONNECTOR);
-
-require (LOGIN_FUNCTIONS);
-
+	require ('connector.php');
+	require ('login_functions.inc.php');
 	
+		
 	// Check the login:
 	list ($check, $data) = check_login($database, $_POST['email'], $_POST['pass']);
 	
 	if ($check) { // OK!
 		
 		// Set the session data:
-		//session_start();		
+		session_start();		
 		$_SESSION['firstname'] = $data['firstname'];
 		$_SESSION['lastname'] = $data['lastname'];
 
@@ -35,5 +33,8 @@ require (LOGIN_FUNCTIONS);
 		
 	mysqli_close($database); // Close the database connection.
 
-require ('login_page.inc.php');
+} // End of the main submit conditional.
+
+// Create the page:
+include ('login_page.inc.php');
 ?>

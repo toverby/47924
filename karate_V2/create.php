@@ -1,12 +1,12 @@
-<?php include_once ('./manage.php');?>
+<?php 
 
-<?php
+$page_title = 'Adminstration';
+include ('manage.html');
 
 // Check for form submission:
-if ($_SERVER['REQUEST_METHOD'] == 'POST') 
-{
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-	require_once ('./connector.php'); // Connect to the db.
+	require ('connector.php'); // Connect to the db.
 
 	$errors = array(); // Initialize an error array.
 		
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	}
 
 		
-if(mysqli_num_rows(mysqli_query ($database ,"SELECT lastname,email FROM to2446992_karate_admin WHERE lastname = '$ln' AND email = '$e' "))){
+if(mysqli_num_rows(mysqli_query ($database ,"SELECT lastname,email FROM to2446992_kv2_admin WHERE lastname = '$ln' AND email = '$e' "))){
 								//Code inside if block if userid is already there
 	$errors[]='You email is already registered as an Admin; Contact customer service';
 								}else{
@@ -51,25 +51,24 @@ if(mysqli_num_rows(mysqli_query ($database ,"SELECT lastname,email FROM to244699
 
 if (empty($errors)) { // If everything's OK.
 					
-//create new admin account
+			//create new admin account
 $p=sha1($p);		
-$q = "INSERT INTO `to2446992_karate_admin`(firstname, lastname, `email`, `pass`) VALUES ('$fn','$ln','$e', '$p')";		
+$q = "INSERT INTO `to2446992_kv2_admin`(firstname, lastname, `email`, `pass`) VALUES ('$fn','$ln','$e', '$p')";		
 $r = @mysqli_query ($database, $q); // Run the query.
 
 		if ($r)
-			 { 
-			 	
-				echo '<div id="wrapper">';
+				 { 
+				<div id="wrapper">
 				
 					echo '<h2>SUCCESS!</h2>';
 					echo '<p><br></p>';
-				echo '</div>';
+				</div>
 		
-		$t = "SELECT lastname, firstname , email AS LastName, FirstName, EmailAddress FROM `to2446992_karate_admin`";		
+		$t = "SELECT lastname, firstname , email AS LastName, FirstName, EmailAddress FROM `to2446992_kv2_admin`";		
 			$x = @mysqli_query ($database, $t); // Run the query.
 
 
-						echo '<table align="center" cellspacing="0" cellpadding="15px" width="75%">
+						echo '<table align="center" cellspacing="0" cellpadding="5" width="75%">
 								<h3>The following account has been created:</h3><br><br>
 								<tr>
 									<td align="left"><b>Last Name</b></td>
@@ -78,10 +77,10 @@ $r = @mysqli_query ($database, $q); // Run the query.
 								</tr>
 									';
 
-							// display new admin info
-						$bg = '#000000';
+							// Fetch and print all the records....
+						$bg = '#eeeeee';
 						
-						$bg = ($bg=='#000000' ? '#000000' : '#000000');
+						$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 						
 							echo '<tr bgcolor="' . $bg . '">
 								<td align="left">' . $ln . '</td>
@@ -138,11 +137,11 @@ $r = @mysqli_query ($database, $q); // Run the query.
 
 				<p>Email Address: <input type="text" name="email" size="20" maxlength="40" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"  /> </p>
 
-				<p>Password: <input type="password" name="pass" size="20" maxlength="60" value="<?php if (isset($_POST['pass'])) echo $_POST['pass']; ?>"  /></p>
+				<p>Password: <input type="password" name="pass" size="20" maxlength="20" value="<?php if (isset($_POST['pass'])) echo $_POST['pass']; ?>"  /></p>
 
-				<p>Confirm Password: <input type="password" name="pass2" size="20" maxlength="60" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>"  /></p>
+				<p>Confirm Password: <input type="password" name="pass2" size="20" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>"  /></p>
 
 				<p><input type="submit" name="submit" value="submit" /></p>
 		</form>
 </div>		
-<?php include_once ('./footer.html'); ?>
+<?php include ('footer.html'); ?>
