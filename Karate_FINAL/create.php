@@ -1,4 +1,4 @@
-<?php include_once ('manage.php');?>
+<?php include_once ('./manage.php');?>
 
 <?php
 
@@ -6,7 +6,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
 
-	require_once (CONNECTOR); // Connect to the db.
+	require_once ('./connector.php'); // Connect to the db.
 
 	$errors = array(); // Initialize an error array.
 		

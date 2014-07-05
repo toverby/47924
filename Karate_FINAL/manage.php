@@ -5,7 +5,6 @@
       header('Pragma: no-cache'); // HTTP 1.0.
       header('Expires: 0'); // Proxies.
      require ('config_inc.php'); 
-     $page_title="Adiministratiive";
 ?>           
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -15,10 +14,10 @@
 <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <script type="text/javascript" src="start.js" charset="utf-8"></script>
- <script type="text/javascript" src="jquery-1.6.4.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="query-1.6.4.min.js" charset="utf-8"></script>
   <script type="text/javascript" src= "login.js" charset="utf-8"></script>
-  
+  <script type="text/javascript" src="start.js" charset="utf-8"></script>
+
 
 </head>
 

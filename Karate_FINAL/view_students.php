@@ -86,15 +86,15 @@ if($r === FALSE) {
 while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
 
  {
-	$bg = ($bg=='#000000' ? '#EF8D8D' : '#000000');
+	$bg = ($bg=='#000000' ? '#ffffff' : '#000000');
 		echo '<tr bgcolor="' . $bg . '">
-		<td align="center"><a href="edit_user.php?id=' . $row['ID'] . '">Edit</a></td>
-		<td align="center"><a href="delete_user.php?id=' . $row['ID'] . '">Delete</a></td>
-		<td align="center">' . $row['ID'] . '</td>
-		<td align="center">' . $row['LastName'] . '</td>
-		<td align="center">' . $row['Photo'] . '</td>
-		<td align="center">' . $row['FirstName'] . '</td>
-		<td align="center">' . $row['dr'] . '</td>
+		<td align="left"><a href="edit_user.php?id=' . $row['ID'] . '">Edit</a></td>
+		<td align="left"><a href="delete_user.php?id=' . $row['ID'] . '">Delete</a></td>
+		<td align="left">' . $row['ID'] . '</td>
+		<td align="left">' . $row['LastName'] . '</td>
+		<td align="left">' . $row['Photo'] . '</td>
+		<td align="left">' . $row['FirstName'] . '</td>
+		<td align="left">' . $row['dr'] . '</td>
 	</tr>
 	';
 } // End of WHILE loop.

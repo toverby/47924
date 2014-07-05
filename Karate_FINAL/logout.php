@@ -6,7 +6,7 @@ if (!isset($_SESSION['lastname'])) {
 	
 
 	// Need the functions:
-	require ('login_ajax.php');
+	require ('login_functions.inc.php');
 	redirect_user();	
 	
 } else { // Cancel the session:

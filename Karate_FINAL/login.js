@@ -7,10 +7,10 @@ $(function() {
 	$('#login').submit(function() {
 		
 		// Initialize some variables:
-		var email, password;
+		var email, pass;
 		
 		// Validate the email address:
-		if ($('#email').val().length >= 3) {
+		if ($('#email').val().length >= 6) {
 	
 			// Get the email address:
 			email = $('#email').val();
@@ -32,13 +32,13 @@ $(function() {
 		}
 		
 		// Validate the password:
-		if ($('#password').val().length > 0) {
-			password = $('#password').val();
-			$('#passwordP').removeClass('error');
-			$('#passwordError').hide();
+		if ($('#pass').val().length > 0) {
+			pass = $('#pass').val();
+			$('#passP').removeClass('error');
+			$('#passError').hide();
 		} else {
-			$('#passwordP').addClass('error');
-			$('#passwordError').show();
+			$('#passP').addClass('error');
+			$('#passError').show();
 		}
 				
 		// If appropriate, perform the Ajax request:
@@ -47,7 +47,7 @@ $(function() {
 			// Create an object for the form data:
 			var data = new Object();
 			data.email = email;
-			data.password = password;
+			data.pass = pass;
 			
 			// Create an object of Ajax options:
 			var options = new Object();
@@ -80,7 +80,7 @@ $(function() {
 				}
 				
 			}; // End of success.
-			options.url = 'manage.php';
+			options.url = 'login_ajax.php';
 
 			// Perform the request:
 			$.ajax(options);

@@ -1,7 +1,7 @@
 <?php
-require_once ('config_inc.php'); 
-require (CONNECTOR);
-include ('view_students.php');
+require_once('config_inc.php'); 
+require _once(CONNECTOR);
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// Check for an uploaded file:
@@ -65,9 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			
 } // End of the submitted conditional.
 ?>
-<DIV id="wrapper">
 
-	<form enctype="multipart/form-data" action="upload_image.php" method="post">
+<form enctype="multipart/form-data" action="upload_image.php" method="post">
 		
 		<input type="hidden" name="MAX_FILE_SIZE" value="3100000" />
 			

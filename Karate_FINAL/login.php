@@ -1,40 +1,110 @@
 <?php ob_start(); ?>
-<?php session_start();
-
+<?session_start(); ?>
+<?php 
  header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
  header('Pragma: no-cache'); // HTTP 1.0.
- header('Expires: 0'); // Proxies.
-require_once ('config_inc.php');
+  header('Expires: 0'); // Proxies.
+require ('config_inc.php');
+include ('login_page.php');
+require(CONNECTOR);
+  ?>
+ <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+ {
 
-require_once (CONNECTOR);
+ 	function redirect_user ($page = 'index.php')
+ 	 {
+
+	$url = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+	// Remove any trailing slashes:
+	$url = rtrim($url, '/\\');
+	// Add the page:
+	$url .= '/' . $page;
+	// Redirect the user:
+	header("Location: $url");
+	exit(); // Quit the script.
+
+	} // End of redirect_user() function.
+
+	function check_login($database, $email = '', $pass = '') 
+	{
+			//$email = $this->SanitizeForSQL($email);
+			$errors = array(); // Initialize error array.
+
+			// Validate the email address:
+			if (empty($email)) {
+				$errors[] = 'You forgot to enter your email address.';
+			} else {
+					$e = mysqli_real_escape_string($database, trim($email));
+			}
+
+			// Validate the password:
+			if (empty($pass)) {
+					$errors[] = 'You forgot to enter your password.';
+					} else {
+							$p = mysqli_real_escape_string($database, trim($pass));
+						}
+
+			if (empty($errors)) { // If everything's OK.
+
+						// Retrieve the user_id and first_name for that email/password combination:
+					$p= sha1($p);
+					$q = "SELECT lastname, firstname FROM to2446992_karate_admin WHERE email='$e' AND pass='$p'";		
+					$r = @mysqli_query ($database, $q);
+
+			if (!mysqli_query($database,$q)){
+
+				die('Error: SQL SELECT command   ' . mysqli_error($database));
+									 }
+								echo "Profile not found";
+								echo "$p";
+				
+				// Check the result:
+			if (mysqli_num_rows($r) == 1) {
+
+					// Fetch the record:
+					$row = mysqli_fetch_array ($r, MYSQLI_ASSOC);
+			
+					// Return true and the record:
+					return array(true, $row);
+					
+				} else { // Not a match!
+
+					echo("Error description: " . mysqli_error($database));
+					$errors[] = 'The email address and password entered do not match those on file.';
+				}
+				
+			} // End of empty($errors) IF.
+			
+			// Return false and the errors:
+			return array(false, $errors);
+
+} // End of check_login() function.
+	
+	// Check the login:
+list ($check, $data) = check_login($database, $_POST['email'], $_POST['pass']);
+	
+		if ($check) { // OK!
+			
+			// Set the session data:
+			//session_start();		
+			$_SESSION['firstname'] = $data['firstname'];
+			$_SESSION['lastname'] = $data['lastname'];
+
+			$_SESSION['agent'] = md5($_SERVER['HTTP_USER_AGENT']);
+			
+			// Redirect:
+			redirect_user('loggedin.php');
+				
+					} else { // Unsuccessful!
+
+				// Assign $data to $errors for login_page.inc.php:
+			echo("Error description: " . mysqli_error($database));
+			
+			$errors = $data;
+
+		}
+			
+		mysqli_close($database); // Close the database connection.
+	}
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Login</title>
-	<link rel="stylesheet" href="login_style.css" type="text/css" media="screen" />
-	<script type="text/javascript" src="start.js" charset="utf-8"></script>
-	<script type="text/javascript" src= "login.js" charset="utf-8"></script>
-	<script type="text/javascript" src="jquery-1.6.4.min.js" charset="utf-8"></script>
-  	
-
-
-</head>
-<body>
-
-	
-<h1>Login</h1>
-
-<p id="results"></p>
-	
-
-	<form action="login.php" method="post" id="login">
-		<p id="emailP">Email Address: <input type="text" name="email" id="email" size="15" /><span class="errorMessage" id="emailError">Please enter your email address!</span></p>
-		<p id="passwordP">Password: <input type="password" name="password" id="password" size"15" /><span class="errorMessage" id="passwordError">Please enter your password!</span></p>
-		<p><input type="submit" name="submit" value="Login!" /></p>
-
-	</form>
-</body>
-</html>
-<?php ob_flush() ?>

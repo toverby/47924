@@ -119,8 +119,9 @@ $errors = array(); // Initialize an error array to store errors
 		if(mysqli_num_rows(mysqli_query ($database ,"SELECT LastName,FirstName FROM to2446992_Karate_Student_App WHERE LastName = '$ln' AND FirstName = '$fn' "))){
 						//Code inside if block if userid is already there
 					$errors[]='The system says you already have an Application on file. Please call for help';
-									}else{
-												echo '<p><br></p>';
+					
+														}else{
+														echo '<p><br></p>';
 
 															}
 						

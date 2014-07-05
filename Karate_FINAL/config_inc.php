@@ -6,40 +6,19 @@
 	
 ****************Project Details(Karate)*****************
 Tech used: OOP Connector to database using MySQLi class
-session use with MD5 useragent
 Config Script to define paths and report errors, "config_inc.php"
 queries(some)excuted using the object "query" from call MySQLi class\
-Logon page using JS and Ajax per book--not finished
+
 3 tables in MySQL database(47924):
  to2446992_Karate_Student_App(hold karate student accounts includeing pic uploads using "join.php"),  to2446992_New_Customer(contain intial contacts using " cust_contact.php")
  to2446992_Admin(contains Administrator profiles created using "create.php") 
 
-User page-index.php/header.html
-	cust_contact.php-create mailing contact list
-	join.php-Allow user to join the Karate Club Fields===>`RegDate`,`Photo`,`Salutation`,`FirstName`,`LastName`,`Birthdate`,`EmergencyContact`,`MobileNumber`,`PhoneNumber`,`ChildrenNames`,`Address`,`City`,`State`,`PostalCode`,`EmailAddress`,`SpouseName`,`Notes`
 
-
-Admin page=manage.php
-	create.php-creates new Admin profile
-	delete_user.php-remove student entry
-	edit_user.php-edit info and change student pic in database(still in development)
-	getrecords.php-display students and contactins in tables
-	upload_image.php-Change student pics
-
---------------------------------------
-Fix Alot of errors.. Login page displays. View_Students.php works. Most path errors have been fixed. 
-Modified config_ajax.php correctly and login.js files
-
-Current status: After logging out cannot log back in. Even though session ids are created.  No 302 errors..to be continued
-
-view ADMIN page here:
-
-http://209.129.8.3/~47924/to2446992/htdocs/final/karateSECURE/manage.php
 */
 // ************ SETTINGS ************ //
 
 // Flag variable for site status:
-define('LIVE', TRUE);
+define('LIVE', TRUE;
 
 // Admin contact address:
 define('EMAIL', 'InsertRealAddressHere');

@@ -1,6 +1,7 @@
 //Dialog boxes for start
+var msg;
 
-function login_function(msg)
+$login_function(msg)
 {
 	
 	alert(msg);
